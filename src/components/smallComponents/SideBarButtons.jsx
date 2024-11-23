@@ -19,7 +19,7 @@ const SidebarButtons = () => {
   ];
 
   return (
-    <div className="flex flex-col items-start space-y-2">
+    <div className="flex flex-col items-start space-y-2 mt-3">
       {buttons.map((button, index) => (
         <button
           key={index}

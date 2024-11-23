@@ -6,17 +6,14 @@ import ProfileComponent from "../components/smallComponents/ProfileComponent";
 
 const Mainpage = () => {
   return (
-    <div className="flex">
-      <div className="flex flex-col items-center">
+    <div className="flex mx-10 mt-5">
+      <div className="flex flex-col">
         <img src="/logo.svg" alt="Study Buddy Logo" className="h-12 md:h-20" />
         <SidebarButtons />
       </div>
       <div className="flex flex-col items-center mt-5">
-        <div>
-          <ProfileComponent />
-          <SlidingToggleButton />
-          <ContinueLearning />
-        </div>
+        <SlidingToggleButton />
+        <ContinueLearning />
       </div>
     </div>
   );

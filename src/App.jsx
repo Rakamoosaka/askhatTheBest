@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Mainpage from "./pages/Mainpage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Learnpage from "./pages/Learnpage";
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/mainpage" element={<Mainpage />} />
+          <Route path="/main" element={<Mainpage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/learn" element={<Learnpage />} />
 
           <Route
             path="*"
