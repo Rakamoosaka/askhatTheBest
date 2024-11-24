@@ -77,7 +77,7 @@ const LearnPage = () => {
           <video
             controls
             className={styles.video}
-            src="/path-to-your-video.mp4"
+            src="./history.mp4"
           >
             Your browser does not support the video tag.
           </video>

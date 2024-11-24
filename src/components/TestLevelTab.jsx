@@ -14,7 +14,7 @@ const TestLevelTab = () => {
         {/* Illustration */}
         <div className="flex justify-center my-4">
           <img
-            src="/path-to-image.jpg"
+            src="./images (1).jpg"
             alt="Illustration"
             className="w-32 h-auto"
           />
