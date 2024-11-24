@@ -6,7 +6,7 @@ import SidebarButtons from "../components/smallComponents/sideBarButtons";
 import AchievementsTab from "../components/AchievementsTab";
 import RaitingTab from "../components/RatingTab";
 import TestLevelTab from "../components/TestLevelTab";
-
+import ProfilePage from "../components/ProfilePage";
 
 const Mainpage = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -24,7 +24,7 @@ const Mainpage = () => {
       case 4:
         return <div></div> // Placeholder for Forum
       case 5:
-        return <div>Profile Content</div>; // Placeholder for Profile
+        return <ProfilePage/>; // Placeholder for Profile
       default:
         return null;
     }
