@@ -1,0 +1,46 @@
+<!-- templates/quiz_app/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест по истории Казахстана</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quiz_app/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Тест по истории Казахстана</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label>Введите ваше имя:</label>
+            <input type="text" name="user" required>
+            <br><br>
+            {% for question in questions %}
+                <div class="question">
+                    <p>{{ forloop.counter }}. {{ question.question_text }}</p>
+                    <div class="answers">
+                        <label>
+                            <input type="radio" name="question_{{ question.id }}" value="A" required>
+                            A) {{ question.option_a }}
+                        </label><br>
+                        <label>
+                            <input type="radio" name="question_{{ question.id }}" value="B">
+                            B) {{ question.option_b }}
+                        </label><br>
+                        <label>
+                            <input type="radio" name="question_{{ question.id }}" value="C">
+                            C) {{ question.option_c }}
+                        </label><br>
+                        <label>
+                            <input type="radio" name="question_{{ question.id }}" value="D">
+                            D) {{ question.option_d }}
+                        </label><br>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+            <button type="submit">Показать результаты</button>
+        </form>
+    </div>
+</body>
+</html>

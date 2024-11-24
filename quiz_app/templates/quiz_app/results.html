@@ -1,0 +1,32 @@
+<!-- templates/quiz_app/results.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты теста</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quiz_app/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Результаты теста</h1>
+        <p>Пользователь: {{ user }}</p>
+        <p>Вы правильно ответили на {{ score }} из {{ total }} вопросов.</p>
+        <h2>Детали ответов:</h2>
+        <ul>
+            {% for answer in answers %}
+                <li>
+                    Вопрос: {{ answer.question }}<br>
+                    Ваш ответ: {{ answer.selected }}<br>
+                    Правильный ответ: {{ answer.correct }}<br>
+                    {% if answer.is_correct %}
+                        <span style="color: green;">Верно</span>
+                    {% else %}
+                        <span style="color: red;">Неверно</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
