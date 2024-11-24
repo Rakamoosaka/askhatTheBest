@@ -126,22 +126,23 @@ const LearnPage = () => {
         </div>
       )}
 
-      {stage === "finish" && (
-        <div className={styles.section}>
-          <h2 className={styles.question}>Так держать!</h2>
-          <p className={styles.subText}>
-            Каждый день смотри видео, практикуйся, учи даты, чтобы развивать свой прогресс.
-          </p>
-          <div className={styles.quizImage}>
-            <img
-              src={finishImage}
-              alt="Congratulations"
-              className={styles.image}
-            />
-          </div>
-          <button className={styles.learnButton}>Супер!</button>
-        </div>
-      )}
+{stage === "finish" && (
+  <div className={styles.section}>
+    <h2 className={styles.question}>Так держать!</h2>
+    <p className={styles.subText}>
+      Каждый день смотри видео, практикуйся, учи даты, чтобы развивать свой прогресс.
+    </p>
+    {/* Image container */}
+    <div className={styles.quizImage}>
+      <img
+        src={finishImage}
+        alt="Congratulations"
+        className={styles.image}
+      />
+    </div>
+    <button className={styles.learnButton}>Супер!</button>
+  </div>
+)}
     </div>
   );
 };
