@@ -20,7 +20,7 @@ const SlidingToggleButton = () => {
             !isLearnSelected ? "text-black font-bold" : "text-gray-500"
           }`}
         >
-          Повторение
+          Ресурсы
         </button>
         {/* Sliding background */}
         <div

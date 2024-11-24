@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/learnPage.module.css";
 
 const LearnPage = () => {
@@ -6,6 +7,8 @@ const LearnPage = () => {
   const [stage, setStage] = useState("video"); // "video", "quiz", "finish"
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+
+  const navigate = useNavigate(); // Hook for navigation
 
   // Array of questions with images and answers
   const questions = [
@@ -52,6 +55,11 @@ const LearnPage = () => {
     } else {
       setStage("finish");
     }
+  };
+
+  // Handle "Супер!" button click
+  const handleFinish = () => {
+    navigate("/main"); // Replace "/another-page" with your desired route
   };
 
   return (
@@ -126,23 +134,28 @@ const LearnPage = () => {
         </div>
       )}
 
-{stage === "finish" && (
-  <div className={styles.section}>
-    <h2 className={styles.question}>Так держать!</h2>
-    <p className={styles.subText}>
-      Каждый день смотри видео, практикуйся, учи даты, чтобы развивать свой прогресс.
-    </p>
-    {/* Image container */}
-    <div className={styles.quizImage}>
-      <img
-        src={finishImage}
-        alt="Congratulations"
-        className={styles.image}
-      />
-    </div>
-    <button className={styles.learnButton}>Супер!</button>
-  </div>
-)}
+      {stage === "finish" && (
+        <div className={styles.section}>
+          <h2 className={styles.question}>Так держать!</h2>
+          <p className={styles.subText}>
+            Каждый день смотри видео, практикуйся, учи даты, чтобы развивать свой прогресс.
+          </p>
+          {/* Image container */}
+          <div className={styles.quizImage}>
+            <img
+              src={finishImage}
+              alt="Congratulations"
+              className={styles.image}
+            />
+          </div>
+          <button
+            className={styles.learnButton}
+            onClick={handleFinish} // Navigate to another page
+          >
+            Супер!
+          </button>
+        </div>
+      )}
     </div>
   );
 };
