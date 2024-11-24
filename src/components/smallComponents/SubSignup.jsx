@@ -47,46 +47,39 @@ const SubSignup = ({ onSuccess }) => {
 
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
-    setValidMatch(pwd === matchPwd);
-  }, [pwd, matchPwd]);
+  }, [pwd]);
+
+  useEffect(() => {
+    setValidMatch(PWD_REGEX.test(matchPwd));
+  }, [matchPwd]);
 
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd, matchPwd]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // if button enabled with JS hack
-    const v1 = USER_REGEX.test(user);
-    const v2 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2) {
-      setErrMsg("Invalid Entry");
-      return;
-    }
-    console.log(user, pwd);
-    setSuccess(true);
-  };
-
   const navigate = useNavigate(); // React Router hook for navigation
 
   // Function to handle user registration
-  const handleRegister = () => {
+  const handleRegister = async () => {
     const userData = {
       email,
       username: user,
-      pwd,
+      password: pwd,
+      password2: matchPwd,
     };
 
-    axios
-      .post("/api/auth/register", userData)
-      .then((response) => {
-        console.log("User registered successfully:", response.data);
-        alert("Registration successful!");
-      })
-      .catch((error) => {
-        console.error("Registration failed:", error.response || error.message);
-        setError(error.response?.data || "Failed to register. Try again.");
-      });
+    try {
+      const response = await axios.post("/api/register/", userData); // Axios instance automatically prepends baseURL
+      console.log("User registered successfully:", response.data);
+      onSuccess(); // Notify the parent component
+    } catch (error) {
+      console.error("Registration failed:", error.response || error.message);
+      setErrMsg(
+        error.response?.data?.detail ||
+          error.response?.data?.non_field_errors ||
+          "Failed to register. Try again."
+      );
+    }
   };
 
   const handleAlready = () => {
