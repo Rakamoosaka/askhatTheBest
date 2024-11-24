@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import SlidingToggleButton from "./smallComponents/SlidingToggleButton";
-import { useNavigate } from "react-router-dom";
 import SlidingToggle from "../components/SlidingToggle.jsx";
+import { useNavigate } from "react-router-dom";
 
 const EducationTab = () => {
   const [isResources, setIsResources] = useState(false); // Toggle state
@@ -15,15 +14,37 @@ const EducationTab = () => {
   ];
 
   const resources = [
-    { id: 1, title: "Resource 1", description: "Description of resource 1" },
-    { id: 2, title: "Resource 2", description: "Description of resource 2" },
-    { id: 3, title: "Resource 3", description: "Description of resource 3" },
+    {
+      id: 1,
+      title: "Resource 1",
+      description: "Description of resource 1",
+      image: "./book.jpg",
+      url: "/resource-1", // URL to navigate to
+    },
+    {
+      id: 2,
+      title: "Resource 2",
+      description: "Description of resource 2",
+      image: "./book.jpg",
+      url: "/resource-2", // URL to navigate to
+    },
+    {
+      id: 3,
+      title: "Resource 3",
+      description: "Description of resource 3",
+      image: "./book.jpg",
+      url: "/resource-3", // URL to navigate to
+    },
   ];
 
   const navigate = useNavigate();
 
   const handleCardClick = (grade) => {
-    navigate(`/learn`); 
+    navigate(`/learn`);
+  };
+
+  const handleResourceClick = (url) => {
+    navigate(url); // Navigate to the specified resource URL
   };
 
   const handleToggle = () => {
@@ -34,7 +55,7 @@ const EducationTab = () => {
     <div className="p-6">
       {/* Sliding Toggle Button */}
       <div className="flex justify-center mb-6">
-        <SlidingToggleButton
+        <SlidingToggle
           leftLabel="Учить"
           rightLabel="Ресурсы"
           isRightActive={isResources}
@@ -73,14 +94,23 @@ const EducationTab = () => {
           <h1 className="text-2xl font-bold text-center mb-8">
             Доступные ресурсы
           </h1>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {resources.map((resource) => (
               <div
                 key={resource.id}
-                className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition"
+                className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer"
+                onClick={() => handleResourceClick(resource.url)} // Handle navigation
               >
-                <h2 className="text-lg font-semibold">{resource.title}FFFF</h2>
-                <p className="text-gray-600">{resource.description}</p>
+                <img
+                  src={resource.image}
+                  alt={resource.title}
+                  className="w-full h-60 object-cover rounded-t-lg"
+                  style={{ aspectRatio: "3 / 4" }}
+                />
+                <div className="p-4">
+                  <h2 className="text-lg font-semibold">{resource.title}</h2>
+                  <p className="text-gray-600">{resource.description}</p>
+                </div>
               </div>
             ))}
           </div>

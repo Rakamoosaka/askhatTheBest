@@ -20,7 +20,7 @@ const Mainpage = () => {
       case 2:
         return <RaitingTab />; // Placeholder for Ratings
       case 3:
-        return <TestLevelTab />; // Placeholder for Trial Test
+        return <TestLevelTab/>; // Placeholder for Trial Test
       case 4:
         return <div></div> // Placeholder for Forum
       case 5:
