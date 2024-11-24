@@ -12,32 +12,32 @@ const LearnPage = () => {
     {
       question: "Вопрос: жесткий камень, ваше йоу?",
       answers: ["Кремень", "Мрамор", "Гранит", "Кварц"],
-      image: "/images/flint.jpg", // Example image for the question
+      image: "./images.jpg", // Example image for the question
     },
     {
       question: "Что использовали для разжигания огня?",
       answers: ["Дерево", "Кремень", "Сено", "Металл"],
-      image: "/images/firestarter.jpg",
+      image: "./images (1).jpg",
     },
     {
       question: "Какой материал использовался для создания инструментов?",
       answers: ["Кремень", "Бронза", "Сталь", "Глина"],
-      image: "/images/tools.jpg",
+      image: "./images (2).jpg",
     },
     {
       question: "Как назывался период древней истории?",
       answers: ["Палеолит", "Неолит", "Мезолит", "Железный век"],
-      image: "/images/history.jpg",
+      image: "./images (3).jpg",
     },
     {
       question: "Какая река была важна для древних цивилизаций?",
       answers: ["Амударья", "Енисей", "Волга", "Сырдарья"],
-      image: "/images/river.jpg",
+      image: "./images (4).jpg",
     },
   ];
 
   // Finish page image
-  const finishImage = "/images/meme.jpg";
+  const finishImage = "./images (5).jpg";
 
   // Handle button click for video completion
   const handleVideoComplete = () => {
